@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/1. Basics/1. Basics.iml" filepath="$PROJECT_DIR$/1. Basics/1. Basics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/3. Arrays/1. Easy/1. Easy.iml" filepath="$PROJECT_DIR$/3. Arrays/1. Easy/1. Easy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/3. Arrays/2. Medium/2. Medium.iml" filepath="$PROJECT_DIR$/3. Arrays/2. Medium/2. Medium.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2. sorting Techniques/2. Sorting Techniques.iml" filepath="$PROJECT_DIR$/2. sorting Techniques/2. Sorting Techniques.iml" />
+      <module fileurl="file://$PROJECT_DIR$/3. Arrays/3. Arrays.iml" filepath="$PROJECT_DIR$/3. Arrays/3. Arrays.iml" />
+      <module fileurl="file://$PROJECT_DIR$/3. Arrays/3. Hard/3. Hard.iml" filepath="$PROJECT_DIR$/3. Arrays/3. Hard/3. Hard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DSA-Striver-A2Z.iml" filepath="$PROJECT_DIR$/DSA-Striver-A2Z.iml" />
+    </modules>
+  </component>
+</project>
