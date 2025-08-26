@@ -1,3 +1,4 @@
+//This is for the case when pos == negative
 public class RearrangeArray {
 
     // Brute force approach
