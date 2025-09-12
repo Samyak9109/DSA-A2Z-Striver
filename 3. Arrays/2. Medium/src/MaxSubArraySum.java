@@ -1,6 +1,10 @@
 public class MaxSubArraySum {
 
     // Brute Force: Check all subarrays and track the max sum
+    // Time Complexity: O(N^3)
+    // - Three nested loops, each up to N
+    // Space Complexity: O(1)
+    // - No extra space used
     static int maxSubarraySumBrute(int[] nums) {
         int n = nums.length;
         int maxi = Integer.MIN_VALUE;
@@ -17,13 +21,14 @@ public class MaxSubArraySum {
 
         return maxi;
 
-        // Time Complexity: O(N^3)
-        // - Three nested loops, each up to N
-        // Space Complexity: O(1)
-        // - No extra space used
     }
 
     // Better Approach: Use a running sum to avoid recomputing sums
+    // Time Complexity: O(N^2)
+    // - Two nested loops, each up to N
+    // - Inner loop uses O(1) addition (no third loop)
+    // Space Complexity: O(1)
+    // - No extra space used
     static int maxSubarrayBetter(int[] nums) {
         int n = nums.length;
         int maxi = Integer.MIN_VALUE;
@@ -37,36 +42,29 @@ public class MaxSubArraySum {
         }
 
         return maxi;
-
-        // Time Complexity: O(N^2)
-        // - Two nested loops, each up to N
-        // - Inner loop uses O(1) addition (no third loop)
-        // Space Complexity: O(1)
-        // - No extra space used
     }
 
     // Optimal Approach: Kadane's Algorithm
+    // Time Complexity: O(N)
+    // - Single loop through array
+    // Space Complexity: O(1)
+    // - Constant space used
     static int maxSubarrayOptimal(int[] nums) {
         int n = nums.length;
         int maxi = Integer.MIN_VALUE;
         int sum = 0;
 
-        for (int i = 0; i < n; i++) {
-            sum += nums[i]; // Add current element to running sum
+        for (int num : nums) {
+            sum += num; // Add current element to running sum
             if (sum > maxi) maxi = sum; // Update max sum if needed
             if (sum < 0) sum = 0; // Reset sum if it becomes negative
         }
 
         return maxi;
-
-        // Time Complexity: O(N)
-        // - Single loop through array
-        // Space Complexity: O(1)
-        // - Constant space used
     }
 
     // Optimal Approach to return and print the actual subarray
-    static int[] printSubarray(int[] nums) {
+    static void printSubarray(int[] nums) {
         int n = nums.length;
         int maxi = Integer.MIN_VALUE;
         int sum = 0;
@@ -100,7 +98,6 @@ public class MaxSubArraySum {
         for (int i = ansStart; i <= ansEnd; i++) {
             result[i - ansStart] = nums[i];
         }
-        return result;
 
         // Time Complexity: O(N)
         // - Single loop through array
