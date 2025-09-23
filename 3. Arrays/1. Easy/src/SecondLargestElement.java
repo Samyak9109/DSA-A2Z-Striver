@@ -8,14 +8,14 @@ public class SecondLargestElement {
      * - Single pass through the array.
      *
      * Space Complexity: O(1)
-     * - Uses fixed number of variables.
+     * - Uses a fixed number of variables.
      *
      * @param arr Input integer array
      * @return second largest non-negative element or -1 if none exists
      */
     static int getSecondLargest(int[] arr) {
-        int largest = -1;        // Track largest non-negative number found
-        int secondLargest = -1;  // Track second largest non-negative number found
+        int largest = -1;        // Track largest non-negative number
+        int secondLargest = -1;  // Track second largest non-negative number
 
         for (int val : arr) {
             if (val < 0) continue; // Skip negative numbers
@@ -37,5 +37,6 @@ public class SecondLargestElement {
     public static void main(String[] args) {
         int[] numbers = {12, 45, 2, 67, 34};
         System.out.println("Second Largest element: " + getSecondLargest(numbers));
+        // Expected Output: 45 (largest is 67)
     }
 }

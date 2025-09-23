@@ -1,27 +1,30 @@
 public class GetSecondSmallest {
 
     // -----------------------------------------------------------------------
-    // Method: getSecondSmallest
-    // Description: Finds the second smallest non-negative element in an array.
+    // Approach: Single Traversal
+    // -----------------------------------------------------------------------
+    // Description:
+    // Find the second smallest non-negative element in the array.
+    // Ignores negative numbers.
     //
     // Time Complexity: O(n)
-    // - Single traversal of the array.
+    // - Only one pass through the array.
     //
     // Space Complexity: O(1)
-    // - Uses constant extra space.
+    // - Uses only two variables for smallest and second smallest.
     // -----------------------------------------------------------------------
     static int getSecondSmallest(int[] arr) {
-        int smallest = Integer.MAX_VALUE;
-        int secondSmallest = Integer.MAX_VALUE;
+        int smallest = Integer.MAX_VALUE;       // Initialize smallest
+        int secondSmallest = Integer.MAX_VALUE; // Initialize second smallest
 
         for (int var : arr) {
-            if (var < 0) continue; // Ignore negative values
+            if (var < 0) continue; // Ignore negative numbers
 
             if (var < smallest) {
-                secondSmallest = smallest;  // update second smallest
-                smallest = var;             // update smallest
+                secondSmallest = smallest; // Previous smallest becomes second smallest
+                smallest = var;            // Update smallest
             } else if (var > smallest && var < secondSmallest) {
-                secondSmallest = var;       // update second smallest only if var is between smallest and secondSmallest
+                secondSmallest = var;      // Update second smallest if in between
             }
         }
 
@@ -30,7 +33,7 @@ public class GetSecondSmallest {
     }
 
     // -----------------------------------------------------------------------
-    // Main method for testing
+    // Main Method: Test the function
     // -----------------------------------------------------------------------
     public static void main(String[] args) {
         int[] numbers = {12, -5, 45, 2, 67, -9, 0};

@@ -4,11 +4,11 @@ import java.util.Map;
 public class LongestSubarraySumK {
 
     // -------------------------------------------------------------------
-    // Brute Force Approach:
-    // Time Complexity: O(N^3)
-    // - Three nested loops: i, j for subarray boundaries and l for summing.
-    // Space Complexity: O(1)
-    // - Only a few variables, no extra data structures.
+    // Approach 1: Brute Force
+    // Description:
+    // Check all subarrays by three nested loops and calculate sum.
+    // Time Complexity: O(N^3) – three nested loops
+    // Space Complexity: O(1) – only uses variables
     // -------------------------------------------------------------------
     static int getLongestSubarrayBrute(int[] arr, int k) {
         int n = arr.length;
@@ -29,11 +29,11 @@ public class LongestSubarraySumK {
     }
 
     // -------------------------------------------------------------------
-    // Better Approach:
+    // Approach 2: Better (Incremental Sum)
+    // Description:
+    // Compute sum incrementally in two nested loops, avoiding third loop.
     // Time Complexity: O(N^2)
-    // - Two nested loops: i and j. sum is accumulated incrementally.
     // Space Complexity: O(1)
-    // - No extra space used.
     // -------------------------------------------------------------------
     static int getLongestSubarrayBetter(int[] arr, int k) {
         int n = arr.length;
@@ -52,11 +52,13 @@ public class LongestSubarraySumK {
     }
 
     // -------------------------------------------------------------------
-    // Optimal Approach using Prefix Sum and HashMap:
+    // Approach 3: Optimal using Prefix Sum + HashMap
+    // Description:
+    // Use hashmap to store first occurrence of prefix sums.
+    // If (prefixSum - k) exists, a subarray with sum k is found.
+    // Works with negative numbers as well.
     // Time Complexity: O(N)
-    // - Single pass through array; hashmap operations O(1) on average.
     // Space Complexity: O(N)
-    // - HashMap stores prefix sums and their earliest indices.
     // -------------------------------------------------------------------
     static int getLongestSubarrayOptimal(int[] arr, int k) {
         int n = arr.length;
@@ -68,37 +70,35 @@ public class LongestSubarraySumK {
             sum += arr[i]; // running prefix sum
 
             if (sum == k) {
-                maxLen = i + 1; // entire prefix matches sum k
+                maxLen = i + 1; // subarray from start
             }
 
             int rem = sum - k;
             if (preSumMap.containsKey(rem)) {
-                int len = i - preSumMap.get(rem); // length of subarray summing to k
+                int len = i - preSumMap.get(rem); // length of subarray
                 maxLen = Math.max(maxLen, len);
             }
 
-            // store earliest occurrence of prefix sum
-            preSumMap.putIfAbsent(sum, i);
+            preSumMap.putIfAbsent(sum, i); // store earliest occurrence
         }
         return maxLen;
     }
 
     // -------------------------------------------------------------------
-    // Optimal Approach for Non-negative elements using Sliding Window (2 pointers):
+    // Approach 4: Optimal for Non-negative Numbers using Sliding Window
+    // Description:
+    // Expand window to the right; shrink from left if sum exceeds k.
+    // Only valid for non-negative numbers.
     // Time Complexity: O(N)
-    // - Each element visited at most twice.
     // Space Complexity: O(1)
-    // - No extra space used.
-    // Note: Valid only when array elements are non-negative.
     // -------------------------------------------------------------------
     public static int getLongestSubarrayOptimal2(int[] a, long k) {
         int n = a.length;
         int left = 0, right = 0;
-        long sum = a.length > 0 ? a[0] : 0; // handle empty array edge case
+        long sum = n > 0 ? a[0] : 0;
         int maxLen = 0;
 
         while (right < n) {
-            // shrink window if sum exceeds k
             while (left <= right && sum > k) {
                 sum -= a[left];
                 left++;
@@ -113,7 +113,6 @@ public class LongestSubarraySumK {
                 sum += a[right];
             }
         }
-
         return maxLen;
     }
 
@@ -126,16 +125,10 @@ public class LongestSubarraySumK {
 
         System.out.println("Input Array: {-1, 1, 1}, Target Sum = 1");
 
-        int bruteLen = getLongestSubarrayBrute(a, k);
-        System.out.println("Brute Force -> Longest subarray length: " + bruteLen);
-
-        int betterLen = getLongestSubarrayBetter(a, k);
-        System.out.println("Better Approach -> Longest subarray length: " + betterLen);
-
-        int optimalLen = getLongestSubarrayOptimal(a, k);
-        System.out.println("Optimal Approach (HashMap) -> Longest subarray length: " + optimalLen);
-
-        int optimal2Len = getLongestSubarrayOptimal2(a, k); // Only valid if all elements are non-negative
-        System.out.println("Optimal Approach 2 (2 pointers) -> Longest subarray length: " + optimal2Len);
+        System.out.println("Brute Force -> Longest subarray length: " + getLongestSubarrayBrute(a, k));
+        System.out.println("Better Approach -> Longest subarray length: " + getLongestSubarrayBetter(a, k));
+        System.out.println("Optimal (HashMap) -> Longest subarray length: " + getLongestSubarrayOptimal(a, k));
+        System.out.println("Optimal 2 (Sliding Window, non-negative) -> Longest subarray length: "
+                + getLongestSubarrayOptimal2(a, k));
     }
 }

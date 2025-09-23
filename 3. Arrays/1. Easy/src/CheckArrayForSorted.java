@@ -1,81 +1,79 @@
 public class CheckArrayForSorted {
 
-    // -------------------------------------------------------------------
-    // Brute Force: Compare every pair (i, j) where i < j
+    // ===========================
+    // Approach 1: Brute Force
+    // ===========================
+    // Description:
+    // Compare every pair (i, j) where i < j. If any arr[i] > arr[j], array is not sorted.
+    // Time Complexity: O(n^2) – Two nested loops
+    // Space Complexity: O(1) – No extra space used
     static boolean isSortedBruteForce(int[] arr) {
-        // Check every pair to ensure arr[i] <= arr[j] for all j > i
+        // Loop through each element
         for (int i = 0; i < arr.length - 1; i++) {
+            // Compare with every element after i
             for (int j = i + 1; j < arr.length; j++) {
                 if (arr[i] > arr[j]) {
+                    // Found a pair violating order
                     return false;
                 }
             }
         }
-        return true;
+        return true; // All pairs are in order
     }
-    // Time Complexity:
-    // O(n^2) – Two nested loops checking all pairs (i, j)
-    // Total Time Complexity: O(n^2)
-    // Space Complexity:
-    // O(1) – No extra space used
 
-    // -------------------------------------------------------------------
-    // Better Approach: Iterative comparison of adjacent elements
+    // ===========================
+    // Approach 2: Iterative (Better)
+    // ===========================
+    // Description:
+    // Compare each element with the next one. If any arr[i] > arr[i+1], array is not sorted.
+    // Time Complexity: O(n) – Single loop
+    // Space Complexity: O(1) – Constant extra space
     static boolean isSortedIterative(int[] arr) {
-        // Compare each element with the one before it
         for (int i = 1; i < arr.length; i++) {
             if (arr[i - 1] > arr[i]) {
-                return false;
+                return false; // Found unsorted adjacent elements
             }
         }
-        return true;
+        return true; // Array is sorted
     }
-    // Time Complexity:
-    // O(n) – Single loop through the array
-    // Total Time Complexity: O(n)
-    // Space Complexity:
-    // O(1) – Constant space used
 
-    // -------------------------------------------------------------------
-    // Optimal Approach 1: Recursive check of adjacent elements
+    // ===========================
+    // Approach 3: Recursive (Optimal)
+    // ===========================
+    // Description:
+    // Recursively check adjacent elements. Base case is last element.
+    // Time Complexity: O(n) – One recursive call per element
+    // Space Complexity: O(n) – Stack space due to recursion
     static boolean isSortedRecursive(int[] arr, int index) {
-        // Base case: last element reached
-        if (index == arr.length - 1) return true;
-
-        // If current is greater than next, not sorted
-        if (arr[index] > arr[index + 1]) return false;
-
-        // Recursive call for next index
-        return isSortedRecursive(arr, index + 1);
+        if (index == arr.length - 1) return true; // Base case: last element
+        if (arr[index] > arr[index + 1]) return false; // Not sorted
+        return isSortedRecursive(arr, index + 1); // Check next pair
     }
-    // Time Complexity:
-    // O(n) – One recursive call per element
-    // Total Time Complexity: O(n)
-    // Space Complexity:
-    // O(n) – Recursive stack takes linear space
 
-    // -------------------------------------------------------------------
-    // Optimal Approach 2: Java 8 Streams for concise check
+    // ===========================
+    // Approach 4: Stream (Concise)
+    // ===========================
+    // Description:
+    // Java 8 stream checks that all adjacent pairs are sorted.
+    // Time Complexity: O(n) – Stream loops once internally
+    // Space Complexity: O(1) – Constant overhead
     static boolean isSortedStream(int[] arr) {
-        // Stream checks that all adjacent pairs are sorted
         return java.util.stream.IntStream.range(0, arr.length - 1)
                 .allMatch(i -> arr[i] <= arr[i + 1]);
     }
-    // Time Complexity:
-    // O(n) – Stream internally loops once
-    // Total Time Complexity: O(n)
-    // Space Complexity:
-    // O(1) – Stream is internally optimized with constant overhead
 
-    // -------------------------------------------------------------------
-    // Wrapper method to print result of each check
+    // ===========================
+    // Helper Method
+    // ===========================
+    // Prints result for each method
     static void checkSorted(String methodName, boolean result) {
         System.out.println(methodName + ": " +
                 (result ? "Array is sorted." : "Array is NOT sorted."));
     }
 
-    // -------------------------------------------------------------------
-    // Main method to test all implementations
+    // ===========================
+    // Main Method: Test All Approaches
+    // ===========================
     public static void main(String[] args) {
         int[] sortedArray = {1, 2, 3, 4, 5};
         int[] unsortedArray = {1, 3, 2, 5};

@@ -2,15 +2,19 @@ import java.util.*;
 
 public class FindIntersection {
 
-    // -------------------------------------------------------------------
-    // Brute Force (Unsorted Arrays)
-    // Check each element of arr1 against all elements of arr2,
-    // and ensure uniqueness in result by checking previously added elements.
+    // ===========================
+    // Approach 1: Brute Force (Unsorted Arrays)
+    // ===========================
+    // Description:
+    // Check each element of arr1 against all elements of arr2.
+    // Ensure uniqueness in result by checking previously added elements.
+    // Time Complexity: O(n * m + n^2) ~ O(n * m) – Nested loops + duplicate check
+    // Space Complexity: O(min(n, m)) – Result array stores intersection
     static ArrayList<Integer> intersectionUnsortedBrute(int[] arr1, int[] arr2, int n, int m) {
         ArrayList<Integer> result = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             boolean alreadyExists = false;
-            // Check if arr1[i] already in result to avoid duplicates
+            // Avoid duplicates in result
             for (int k : result) {
                 if (k == arr1[i]) {
                     alreadyExists = true;
@@ -19,7 +23,7 @@ public class FindIntersection {
             }
             if (alreadyExists) continue;
 
-            // Check if arr1[i] is in arr2
+            // Check if element exists in arr2
             for (int j = 0; j < m; j++) {
                 if (arr1[i] == arr2[j]) {
                     result.add(arr1[i]);
@@ -29,43 +33,38 @@ public class FindIntersection {
         }
         return result;
     }
-    // Time Complexity:
-    // O(n * m) – For each element in arr1, scan entire arr2
-    // Plus O(k) per element for duplicate check where k is size of result (worst O(n))
-    // Total worst-case: O(n * m + n^2) ~ O(n * m)
-    // Space Complexity:
-    // O(min(n, m)) – result stores intersection elements
 
-    // -------------------------------------------------------------------
-    // Better Approach (Unsorted Arrays) - Using HashSet
-    // Use HashSet for quick lookup to find intersection uniquely
+    // ===========================
+    // Approach 2: Better (Unsorted Arrays – HashSet)
+    // ===========================
+    // Description:
+    // Use HashSet for O(1) lookup to find intersection uniquely.
+    // Time Complexity: O(n + m) – Insert arr1 elements + lookup arr2 elements
+    // Space Complexity: O(n + m) – set1 + resultSet
     static ArrayList<Integer> intersectionUnsortedBetter(int[] arr1, int[] arr2, int n, int m) {
         HashSet<Integer> set1 = new HashSet<>();
         HashSet<Integer> resultSet = new HashSet<>();
 
-        // Add all elements of arr1 to set1 for O(1) lookups
+        // Add arr1 elements to set1 for fast lookup
         for (int i = 0; i < n; i++)
             set1.add(arr1[i]);
 
-        // For each element in arr2, check if present in set1
-        // Add to resultSet to keep unique values only
+        // Check arr2 elements in set1
         for (int i = 0; i < m; i++) {
             if (set1.contains(arr2[i]))
-                resultSet.add(arr2[i]);
+                resultSet.add(arr2[i]); // Only unique elements added
         }
 
         return new ArrayList<>(resultSet);
     }
-    // Time Complexity:
-    // O(n) – Insert all arr1 elements into HashSet
-    // O(m) – Lookup each arr2 element in set1
-    // Total Time Complexity: O(n + m)
-    // Space Complexity:
-    // O(n + m) – For set1 and resultSet in worst case
 
-    // -------------------------------------------------------------------
-    // Optimal Approach for Sorted Arrays - Two Pointers
-    // Traverse both sorted arrays simultaneously to find intersection
+    // ===========================
+    // Approach 3: Optimal for Sorted Arrays – Two Pointers
+    // ===========================
+    // Description:
+    // Traverse both sorted arrays with two pointers to find intersection.
+    // Time Complexity: O(n + m) – Single pass through both arrays
+    // Space Complexity: O(min(n, m)) – For result array
     static ArrayList<Integer> intersectionSortedOptimal(int[] arr1, int[] arr2, int n, int m) {
         ArrayList<Integer> result = new ArrayList<>();
         int i = 0, j = 0;
@@ -81,7 +80,7 @@ public class FindIntersection {
             } else if (arr2[j] < arr1[i]) {
                 j++;
             } else {
-                // Both equal - add to result
+                // Match found
                 result.add(arr1[i]);
                 i++;
                 j++;
@@ -89,25 +88,23 @@ public class FindIntersection {
         }
         return result;
     }
-    // Time Complexity:
-    // O(n + m) – Single pass through both arrays
-    // Total Time Complexity: O(n + m)
-    // Space Complexity:
-    // O(min(n, m)) – for storing intersection elements
 
-    // -------------------------------------------------------------------
-    // Using HashMap for Frequency - Handles duplicates intersection
-    // Count frequency of arr1 elements, then match with arr2 reducing counts
+    // ===========================
+    // Approach 4: Intersection with Duplicates (HashMap Frequency)
+    // ===========================
+    // Description:
+    // Count frequency of arr1 elements, match with arr2 reducing counts.
+    // Time Complexity: O(n + m) – Count arr1 + process arr2
+    // Space Complexity: O(n) – For frequency map
     static ArrayList<Integer> intersectionWithDuplicates(int[] arr1, int[] arr2, int n, int m) {
         HashMap<Integer, Integer> freq = new HashMap<>();
         ArrayList<Integer> result = new ArrayList<>();
 
-        // Count frequencies of elements in arr1
+        // Count frequencies of arr1
         for (int i = 0; i < n; i++)
             freq.put(arr1[i], freq.getOrDefault(arr1[i], 0) + 1);
 
-        // For each element in arr2, add to result if frequency > 0
-        // Decrement frequency to avoid overcounting duplicates
+        // Process arr2 and reduce frequency to handle duplicates
         for (int i = 0; i < m; i++) {
             if (freq.getOrDefault(arr2[i], 0) > 0) {
                 result.add(arr2[i]);
@@ -116,22 +113,17 @@ public class FindIntersection {
         }
         return result;
     }
-    // Time Complexity:
-    // O(n) – Count frequencies in arr1
-    // O(m) – Process arr2 with frequency checks
-    // Total Time Complexity: O(n + m)
-    // Space Complexity:
-    // O(n) – For frequency map
 
-    // -------------------------------------------------------------------
-    // Main method to test all implementations
+    // ===========================
+    // Main Method: Test All Approaches
+    // ===========================
     public static void main(String[] args) {
         int[] sorted1 = {1, 2, 2, 3, 4, 5};
         int[] sorted2 = {2, 2, 3, 5, 6};
         int[] unsorted1 = {4, 5, 9, 4, 8};
         int[] unsorted2 = {5, 4, 4, 10};
 
-        System.out.println("Unsorted Brute: " +
+        System.out.println("Unsorted Brute Force: " +
                 intersectionUnsortedBrute(unsorted1, unsorted2, unsorted1.length, unsorted2.length));
         System.out.println("Unsorted Better (HashSet): " +
                 intersectionUnsortedBetter(unsorted1, unsorted2, unsorted1.length, unsorted2.length));

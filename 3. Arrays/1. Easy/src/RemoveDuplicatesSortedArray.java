@@ -2,10 +2,9 @@ public class RemoveDuplicatesSortedArray {
 
     // ----------------------------------------------------------
     // Method 1: Brute Force Approach
+    // - Nested loops to find and shift duplicates
     // Time Complexity: O(n^2)
-    // - Nested loops to find and shift duplicates.
     // Space Complexity: O(1)
-    // - No extra space used.
     // ----------------------------------------------------------
     public static int removeDuplicatesBrute(int[] nums) {
         int size = nums.length;
@@ -14,7 +13,7 @@ public class RemoveDuplicatesSortedArray {
         for (int i = 0; i < size - 1; i++) {
             for (int j = i + 1; j < size; ) {
                 if (nums[i] == nums[j]) {
-                    // Shift elements left to remove duplicate
+                    // Shift elements left
                     for (int k = j; k < size - 1; k++) {
                         nums[k] = nums[k + 1];
                     }
@@ -29,10 +28,9 @@ public class RemoveDuplicatesSortedArray {
 
     // ----------------------------------------------------------
     // Method 2: Better Approach using Extra Space
+    // - Use a temporary array to store unique elements
     // Time Complexity: O(n)
-    // - Single pass to collect unique elements.
     // Space Complexity: O(n)
-    // - Uses temporary array.
     // ----------------------------------------------------------
     public static int removeDuplicatesBetter(int[] nums) {
         if (nums.length == 0) return 0;
@@ -47,7 +45,7 @@ public class RemoveDuplicatesSortedArray {
             }
         }
 
-        // Copy unique elements back to original array
+        // Copy back
         for (int i = 0; i < j; i++) {
             nums[i] = temp[i];
         }
@@ -57,16 +55,14 @@ public class RemoveDuplicatesSortedArray {
 
     // ----------------------------------------------------------
     // Method 3: Optimal Two-Pointer Approach (In-place)
+    // - Single traversal using slow & fast pointers
     // Time Complexity: O(n)
-    // - Single traversal using two pointers.
     // Space Complexity: O(1)
-    // - No extra space.
     // ----------------------------------------------------------
     public static int removeDuplicatesOptimal(int[] nums) {
         if (nums.length == 0) return 0;
 
         int i = 0; // slow pointer
-
         for (int j = 1; j < nums.length; j++) {
             if (nums[j] != nums[i]) {
                 i++;
@@ -77,9 +73,7 @@ public class RemoveDuplicatesSortedArray {
     }
 
     // ----------------------------------------------------------
-    // Helper method: Print array up to given length
-    // Time Complexity: O(n)
-    // Space Complexity: O(1)
+    // Helper: Print array up to given length
     // ----------------------------------------------------------
     public static void printArray(int[] arr, int length) {
         for (int i = 0; i < length; i++) {
@@ -89,27 +83,24 @@ public class RemoveDuplicatesSortedArray {
     }
 
     // ----------------------------------------------------------
-    // Main method: Tests all three approaches
+    // Main method: Test all three approaches
     // ----------------------------------------------------------
     public static void main(String[] args) {
         int[] original = {1, 1, 2, 2, 3, 4, 4, 5};
 
-        // Test Brute Force
         int[] arr1 = original.clone();
-        int newLength1 = removeDuplicatesBrute(arr1);
+        int len1 = removeDuplicatesBrute(arr1);
         System.out.print("Brute Force Output (O(n^2)): ");
-        printArray(arr1, newLength1);
+        printArray(arr1, len1);
 
-        // Test Better
         int[] arr2 = original.clone();
-        int newLength2 = removeDuplicatesBetter(arr2);
+        int len2 = removeDuplicatesBetter(arr2);
         System.out.print("Better Approach Output (O(n), Extra Space): ");
-        printArray(arr2, newLength2);
+        printArray(arr2, len2);
 
-        // Test Optimal
         int[] arr3 = original.clone();
-        int newLength3 = removeDuplicatesOptimal(arr3);
+        int len3 = removeDuplicatesOptimal(arr3);
         System.out.print("Optimal Approach Output (O(n), In-place): ");
-        printArray(arr3, newLength3);
+        printArray(arr3, len3);
     }
 }
