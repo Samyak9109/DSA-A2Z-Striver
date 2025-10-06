@@ -1,5 +1,5 @@
 import java.util.*;
-//Leetcode 410
+//Leetcode 410 Split Array and Painters Partiton have same Approach
 
 public class BookAllocation {
 
@@ -105,7 +105,6 @@ public class BookAllocation {
         int[] books = {12, 34, 67, 90}; // pages in each book
         int students = 2;
 
-        System.out.println("🔥 Brute Force (conceptual only): " + bruteForce(books, books.length, students));
         System.out.println("⚙️  Better Approach: " + betterApproach(books, students));
         System.out.println("⚡ Optimal Approach (Binary Search): " + findPages(books, students));
     }
