@@ -16,20 +16,6 @@ public class BookAllocation {
      */
 
     // ----------------------------------------------------------------------
-    // 🧠 BRUTE FORCE APPROACH
-    // ----------------------------------------------------------------------
-    // Time Complexity: O(N^K) — we try all possible distributions 😩 (exponential)
-    // Space Complexity: O(1)
-    // This approach is theoretical, just to understand the problem.
-    // ----------------------------------------------------------------------
-    static int bruteForce(int[] arr, int n, int k) {
-        // Not implemented in code — we skip due to exponential explosion
-        // but conceptually, try all partitions of arr into k parts and
-        // pick the one with the minimum possible maximum sum.
-        return -1; // placeholder
-    }
-
-    // ----------------------------------------------------------------------
     // ⚙️ BETTER APPROACH (LINEAR SEARCH)
     // ----------------------------------------------------------------------
     // Time Complexity: O((sum(arr) - max(arr)) * N)
@@ -41,9 +27,9 @@ public class BookAllocation {
         if (k > n) return -1; // can't allocate fewer books to more students
 
         int arrSum = 0, arrMax = Integer.MIN_VALUE;
-        for (int i = 0; i < n; i++) {
-            arrSum += arr[i];
-            arrMax = Math.max(arr[i], arrMax);
+        for (int j : arr) {
+            arrSum += j;
+            arrMax = Math.max(j, arrMax);
         }
 
         // Trying every possible max pages from max(arr) to sum(arr)
@@ -69,9 +55,9 @@ public class BookAllocation {
         if (k > n) return -1;
 
         int arrSum = 0, arrMax = Integer.MIN_VALUE;
-        for (int i = 0; i < n; i++) {
-            arrSum += arr[i];
-            arrMax = Math.max(arr[i], arrMax);
+        for (int j : arr) {
+            arrSum += j;
+            arrMax = Math.max(j, arrMax);
         }
 
         int low = arrMax, high = arrSum;
