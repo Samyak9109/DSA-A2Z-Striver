@@ -4,18 +4,22 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/1. Basics/1. Basics.iml" filepath="$PROJECT_DIR$/1. Basics/1. Basics.iml" />
       <module fileurl="file://$PROJECT_DIR$/3. Arrays/1. Easy/1. Easy.iml" filepath="$PROJECT_DIR$/3. Arrays/1. Easy/1. Easy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/6. LinkedList/1DLinkedList/1DLinkedList.iml" filepath="$PROJECT_DIR$/6. LinkedList/1DLinkedList/1DLinkedList.iml" />
       <module fileurl="file://$PROJECT_DIR$/3. Arrays/2. Medium/2. Medium.iml" filepath="$PROJECT_DIR$/3. Arrays/2. Medium/2. Medium.iml" />
       <module fileurl="file://$PROJECT_DIR$/2. sorting Techniques/2. Sorting Techniques.iml" filepath="$PROJECT_DIR$/2. sorting Techniques/2. Sorting Techniques.iml" />
       <module fileurl="file://$PROJECT_DIR$/3. Arrays/3. Arrays.iml" filepath="$PROJECT_DIR$/3. Arrays/3. Arrays.iml" />
       <module fileurl="file://$PROJECT_DIR$/3. Arrays/3. Hard/3. Hard.iml" filepath="$PROJECT_DIR$/3. Arrays/3. Hard/3. Hard.iml" />
       <module fileurl="file://$PROJECT_DIR$/4. Binary Search/4. Binary Search.iml" filepath="$PROJECT_DIR$/4. Binary Search/4. Binary Search.iml" />
       <module fileurl="file://$PROJECT_DIR$/5. Strings/5. Strings.iml" filepath="$PROJECT_DIR$/5. Strings/5. Strings.iml" />
+      <module fileurl="file://$PROJECT_DIR$/5.Strings/5.Strings.iml" filepath="$PROJECT_DIR$/5.Strings/5.Strings.iml" />
+      <module fileurl="file://$PROJECT_DIR$/6. LinkedList/6. LinkedList.iml" filepath="$PROJECT_DIR$/6. LinkedList/6. LinkedList.iml" />
       <module fileurl="file://$PROJECT_DIR$/4. Binary Search/BSon1DArray/BSon1DArray.iml" filepath="$PROJECT_DIR$/4. Binary Search/BSon1DArray/BSon1DArray.iml" />
       <module fileurl="file://$PROJECT_DIR$/4. Binary Search/BSon2DArray/BSon2DArray.iml" filepath="$PROJECT_DIR$/4. Binary Search/BSon2DArray/BSon2DArray.iml" />
       <module fileurl="file://$PROJECT_DIR$/4. Binary Search/BSonAnswers/BSonAnswers.iml" filepath="$PROJECT_DIR$/4. Binary Search/BSonAnswers/BSonAnswers.iml" />
       <module fileurl="file://$PROJECT_DIR$/5. Strings/Basic/Basic.iml" filepath="$PROJECT_DIR$/5. Strings/Basic/Basic.iml" />
       <module fileurl="file://$PROJECT_DIR$/DSA-Striver-A2Z.iml" filepath="$PROJECT_DIR$/DSA-Striver-A2Z.iml" />
-      <module fileurl="file://$PROJECT_DIR$/5. Strings/Medium/Medium.iml" filepath="$PROJECT_DIR$/5. Strings/Medium/Medium.iml" />
+      <module fileurl="file://$PROJECT_DIR$/5.Strings/Medium/Medium.iml" filepath="$PROJECT_DIR$/5.Strings/Medium/Medium.iml" />
+      <module fileurl="file://$PROJECT_DIR$/5.Strings/basic/basic.iml" filepath="$PROJECT_DIR$/5.Strings/basic/basic.iml" />
     </modules>
   </component>
 </project>
