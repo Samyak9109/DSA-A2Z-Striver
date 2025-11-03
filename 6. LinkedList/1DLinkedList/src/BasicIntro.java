@@ -12,16 +12,6 @@
  * - In Java, references act like pointers for us (no manual pointer magic needed 🪄).
  */
 
-// 🧱 Node class — Self-referential structure that powers the linked list
-class Node {
-    int data;    // stores data
-    Node next;   // reference to next node
-
-    Node(int data) {
-        this.data = data;
-        this.next = null;
-    }
-}
 
 /*
  * 🚀 Converting an Array → Linked List
