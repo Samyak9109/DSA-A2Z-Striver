@@ -1,47 +1,88 @@
+class Node {
+    int data;
+    Node next;
+    Node(int data) { this.data = data; }
+}
+
 public class MiddleOfLL {
-    static Node middleOfLLBrute (Node head) {
-        if (head == null || head.next == null) {
-            return head;
-        }
-        int cnt = 0;
+
+    // 🧪 BRUTE FORCE APPROACH
+    // Step 1: Count nodes (O(n))
+    // Step 2: Walk again to middle (O(n))
+    // Time Complexity: O(n) + O(n) = O(n)
+    // Space Complexity: O(1)
+    static Node middleBrute(Node head) {
+        if (head == null || head.next == null) return head;
+
+        // Count nodes
+        int count = 0;
         Node temp = head;
         while (temp != null) {
-            cnt++;
+            count++;
             temp = temp.next;
         }
-        int mid = cnt / 2 + 1;
+
+        // Middle position (0-based index = count/2)
+        int steps = count / 2;
+
+        // Walk again to reach the middle
         temp = head;
-
-        while (temp != null) {
-            mid = mid - 1;
-
-            // Check if the middle
-            // position is reached.
-            if (mid == 0){
-                // break out of the loop
-                // to return temp
-                break;
-            }
-            // Move temp ahead
+        while (steps > 0) {
             temp = temp.next;
+            steps--;
         }
-
-        // Return the middle node.
         return temp;
     }
 
-    static Node middleOfLLOptimal (Node head) {
-        //using Tortoise and hare approach
-        if (head == null || head.next == null) {
-            return head;
-        }
+    // 🚀 OPTIMAL APPROACH (Tortoise & Hare)
+    // Slow moves 1 step, Fast moves 2 steps
+    // When fast hits end, slow is at the middle
+    // Time: O(n)
+    // Space: O(1)
+    static Node middleOptimal(Node head) {
+        if (head == null || head.next == null) return head;
 
-        Node slow = head, fast = head;
+        Node slow = head;
+        Node fast = head;
 
         while (fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
+            slow = slow.next;        // move slow 1 step
+            fast = fast.next.next;   // move fast 2 steps
         }
-        return slow;
+        return slow; // Middle node
+    }
+
+    // Utility: Create LL from array
+    static Node arrayToLL(int[] arr) {
+        if (arr.length == 0) return null;
+        Node head = new Node(arr[0]);
+        Node temp = head;
+        for (int i = 1; i < arr.length; i++) {
+            temp.next = new Node(arr[i]);
+            temp = temp.next;
+        }
+        return head;
+    }
+
+    // Utility: Print LL
+    static void printLL(Node head) {
+        Node temp = head;
+        while (temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+        System.out.println("null");
+    }
+
+    // 🧵 main() - Demo time
+    public static void main(String[] args) {
+        int[] arr = {1, 3, 5, 7, 9, 11};
+        Node head = arrayToLL(arr);
+
+        System.out.print("Linked List: ");
+        printLL(head);
+
+        System.out.println("Middle (Brute): " + middleBrute(head).data);
+        System.out.println("Middle (Optimal): " + middleOptimal(head).data);
     }
 }
