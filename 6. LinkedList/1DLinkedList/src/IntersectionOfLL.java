@@ -200,7 +200,5 @@ public class IntersectionOfLL {
         } else {
             System.out.println("Brute Force Solution found no intersection.");
         }
-
-        System.out.println("--- Pipeline Review Complete ---");
     }
 }
