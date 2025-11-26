@@ -13,6 +13,7 @@
       <module fileurl="file://$PROJECT_DIR$/5. Strings/5. Strings.iml" filepath="$PROJECT_DIR$/5. Strings/5. Strings.iml" />
       <module fileurl="file://$PROJECT_DIR$/5.Strings/5.Strings.iml" filepath="$PROJECT_DIR$/5.Strings/5.Strings.iml" />
       <module fileurl="file://$PROJECT_DIR$/6. LinkedList/6. LinkedList.iml" filepath="$PROJECT_DIR$/6. LinkedList/6. LinkedList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/6. LinkedList/7. Recursion/7. Recursion.iml" filepath="$PROJECT_DIR$/6. LinkedList/7. Recursion/7. Recursion.iml" />
       <module fileurl="file://$PROJECT_DIR$/../LeetCodeQuestion/Arrays/Arrays.iml" filepath="$PROJECT_DIR$/../LeetCodeQuestion/Arrays/Arrays.iml" />
       <module fileurl="file://$PROJECT_DIR$/4. Binary Search/BSon1DArray/BSon1DArray.iml" filepath="$PROJECT_DIR$/4. Binary Search/BSon1DArray/BSon1DArray.iml" />
       <module fileurl="file://$PROJECT_DIR$/4. Binary Search/BSon2DArray/BSon2DArray.iml" filepath="$PROJECT_DIR$/4. Binary Search/BSon2DArray/BSon2DArray.iml" />
@@ -23,6 +24,7 @@
       <module fileurl="file://$PROJECT_DIR$/6. LinkedList/1DLinkedList/HardQuestions/HardQuestions.iml" filepath="$PROJECT_DIR$/6. LinkedList/1DLinkedList/HardQuestions/HardQuestions.iml" />
       <module fileurl="file://$PROJECT_DIR$/../LeetCodeQuestion/LeetCodeQuestion.iml" filepath="$PROJECT_DIR$/../LeetCodeQuestion/LeetCodeQuestion.iml" />
       <module fileurl="file://$PROJECT_DIR$/5.Strings/Medium/Medium.iml" filepath="$PROJECT_DIR$/5.Strings/Medium/Medium.iml" />
+      <module fileurl="file://$PROJECT_DIR$/6. LinkedList/7. Recursion/Practice/Practice.iml" filepath="$PROJECT_DIR$/6. LinkedList/7. Recursion/Practice/Practice.iml" />
       <module fileurl="file://$PROJECT_DIR$/5.Strings/basic/basic.iml" filepath="$PROJECT_DIR$/5.Strings/basic/basic.iml" />
     </modules>
   </component>
