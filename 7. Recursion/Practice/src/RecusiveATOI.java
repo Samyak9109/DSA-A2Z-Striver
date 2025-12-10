@@ -21,7 +21,7 @@ public class RecusiveATOI {
      * @return The final parsed integer value, clamped to [INT_MIN_VAL, INT_MAX_VAL].
      */
     static int helper (String s, int i, long num, int sign) {
-        // Step 1: Base Case & Termination 🛑
+        // Step 1: Base Case & Termination
         // If we reach the end of the string OR the current character is not a digit,
         // it means we've successfully collected all numerical characters.
         // We calculate the final signed result and cast it back to an 'int'.
